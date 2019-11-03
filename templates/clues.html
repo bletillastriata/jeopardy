@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+  <body>
+    
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Category</th>
+        <th>Value</th>
+        <th>Question</th>
+        <th>Answer</th>
+        <th>Aired</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+            {{clue.category}}
+          </td>
+          <td>{{clue.value}}</td>
+          <td class="align-middle">{{clue.question }}</a></td>
+          <td>{{clue.answer}}</td>
+          <td>{{clue.airdate}}</td>
+        </tr>
+    
+    </tbody>
+  </table>
+
+
+    </div>
+  </body>
+</html>
+{% endblock %}

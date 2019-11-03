@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+  {% extends 'base.html' %}
+
+  
+  {% block content %}
+<p>Showing results for: {{ keyword }}</p>
+
+
+<div class="container">
+   <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Question</th>
+        <th>Answer</th>
+        <th>Value</th>
+        <th>Category</th>
+        <th>Airdate</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for clue in clues %}
+        <tr>
+          <td>
+            <a style="color:#115BA0" href="{% url 'clue_topics' clue.pk %}">{{ clue.question }}</a>
+          </td>
+          <td class="align-middle">{{clue.answer}}</td>
+          <td class="align-middle">{{clue.value}}</td>
+          <td class="align-middle">{{clue.category}}</td>
+          <td class="align-middle">{{clue.airdate}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+
+</div>
+
+{% endblock %}

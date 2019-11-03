@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html>
+  {% extends 'base.html' %}
+
+  
+  {% block content %}
+<p>Welcome to the Jeopardy page! Browse or search clues below.
+<span onclick="show()" style="color: #115BA0">Show/hide search</span></p>
+
+
+<script>
+  function show() {
+    if(document.getElementById("hide").style.display == 'none') {
+      document.getElementById("hide").style.display='block';
+    } else {
+      document.getElementById("hide").style.display = 'none';
+    }
+  }
+</script>
+
+<div class="container">
+<form action="searchresults" method="post">
+    {% csrf_token %}
+
+
+
+<div id="hide">
+<h4>Search</h4>
+    <div class='keyword md-form mt-0'>Keyword:   {{form.keyword}}</div>
+    <div class='keyword md-form mt-0'>Category:   {{form.category}}</div>
+
+    <div class='start_date md-form mt-0'> Starting on: {{form.start_date}}</div>
+
+    <div class='end_date md-form mt-0'>Ending on: {{form.end_date}}</div>
+    
+    <div class='val'>Difficulty Level: {{form.value}}</div><br>
+    <div class='val'>Sort by: {{form.sort}}</div><br>
+
+    
+    <!-- {{ form }} -->
+    <button class="btn btn-indigo submit" value="Submit">Search</button>
+</form>
+</div></div>
+
+<div class="container">
+   <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>Question</th>
+        <th>Answer</th>
+        <th>Value</th>
+        <th>Category</th>
+        <th>Airdate</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for clue in clues %}
+        <tr>
+          <td>
+            <a style="color:#115BA0" href="{% url 'clue_topics' clue.pk %}">{{ clue.question }}</a>
+          </td>
+          <td class="align-middle">{{clue.answer}}</td>
+          <td class="align-middle">{{clue.value}}</td>
+          <td class="align-middle">{{clue.category}}</td>
+          <td class="align-middle">{{clue.airdate}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+
+<div class="pagination" style="padding-bottom: 10px">
+    <span class="step-links">
+        {% if clues.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ clues.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ clues.number }} of {{ clues.paginator.num_pages }}.
+        </span>
+
+        {% if clues.has_next %}
+            <a href="?page={{ clues.next_page_number }}">next</a>
+            <a href="?page={{ clues.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+
+{% endblock %}

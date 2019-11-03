@@ -1,0 +1,22 @@
+.navbar-brand {
+	font-family: 'McLaren', cursive; 
+	color: white; 
+}
+
+body {
+	background-image: url(../img/whitediamond.png);
+	
+}
+
+* {
+	font-family: 'McLaren', cursive; 
+}
+
+#hide {
+    }
+    #msg[aria-hidden="true"]
+    {
+        display: none;
+    }
+
+
