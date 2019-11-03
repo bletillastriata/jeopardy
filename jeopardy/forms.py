@@ -2,12 +2,6 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
-class SignUpForm(UserCreationForm):
-    email = forms.CharField(max_length=254, required=True, widget=forms.EmailInput())
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password1', 'password2')
-
 class ClueSearchForm(forms.Form):
 	
 	VALUES = [
@@ -35,13 +29,8 @@ class ClueSearchForm(forms.Form):
 	start_date = forms.CharField(label='Start Date', max_length=10, required=False, widget=forms.TextInput(attrs={'placeholder': 'mm/dd/yyyy'}))
 	end_date = forms.CharField(label='End Date', max_length=10, required=False, widget=forms.TextInput(attrs={'placeholder': 'mm/dd/yyyy'}))
 	value = forms.ChoiceField(label='Difficulty (cost)',choices=VALUES)
-	sort = forms.ChoiceField(label='Sort by',choices=SORT_OPTIONS, required=False)
 	# 2014-02-11T22:47:18.878Z
 
-	
-
-class BasicSearchForm(forms.Form):
-	keyword = forms.CharField(label='keyword', max_length=100)
 
 
 
