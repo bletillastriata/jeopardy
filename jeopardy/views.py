@@ -54,7 +54,7 @@ def search(request):
 			
 			# filtering by category
 			if form.cleaned_data['category'] != '':
-				clues_list = clues_list.filter(category_name__exact=form.cleaned_data['category'])
+				clues_list = clues_list.filter(category__exact=form.cleaned_data['category'])
 			
 			clues_list = clues_list.order_by('airdate')
 
