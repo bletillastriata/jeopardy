@@ -26,8 +26,8 @@ class ClueSearchForm(forms.Form):
 
 	keyword = forms.CharField(label='Search', max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Enter keyword here'}),required=False)
 	category = forms.CharField(label='Category', max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Enter specific category'}), required=False)
-	start_date = forms.CharField(label='Start Date', max_length=10, required=False, widget=forms.TextInput(attrs={'placeholder': 'mm/dd/yyyy'}))
-	end_date = forms.CharField(label='End Date', max_length=10, required=False, widget=forms.TextInput(attrs={'placeholder': 'mm/dd/yyyy'}))
+	start_date = forms.CharField(label='Start Date', max_length=10, required=False, widget=forms.TextInput(attrs={'placeholder': 'mm-dd-yyyy'}))
+	end_date = forms.CharField(label='End Date', max_length=10, required=False, widget=forms.TextInput(attrs={'placeholder': 'mm-dd-yyyy'}))
 	value = forms.ChoiceField(label='Difficulty (cost)',choices=VALUES)
 	# 2014-02-11T22:47:18.878Z
 
